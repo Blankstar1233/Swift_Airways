@@ -54,6 +54,80 @@ FOREIGN KEY (trans_id) REFERENCES Transaction_t(trans_id),
  select * from office;
 
 
---Department table--
+--Employee table--
+Create table employee(Ssn int primary key, fname varchar(20),lname varchar(20),d_type varchar(10),loc_id int ,dept_id int,salary int, duration_of_work int,manager_ssn int,
+FOREIGN KEY (dept_id) REFERENCES department(dept_id),
+FOREIGN KEY (d_type) REFERENCES depttype(d_type),
+FOREIGN KEY (loc_id) REFERENCES office(loc_id),
+foreign key (manager_ssn) references employee(Ssn));
+
+select * from employee;
+
+--flight table--
+CREATE TABLE flight_crew (
+    FC_id INT PRIMARY KEY,
+    dept_id INT,
+	d_type varchar(20),
+	ssn int,
+    FOREIGN KEY (dept_id) REFERENCES department(dept_id),
+	   FOREIGN KEY (d_type) REFERENCES depttype(d_type),
+	      FOREIGN KEY (ssn) REFERENCES employee(Ssn)
+	   
+);
+select * from flight_crew;
+
+--security--
+CREATE TABLE Securiety (
+    S_id INT PRIMARY KEY,
+    dept_id INT,
+	d_type varchar(20),
+	ssn int,
+    FOREIGN KEY (dept_id) REFERENCES department(dept_id),
+	   FOREIGN KEY (d_type) REFERENCES depttype(d_type),
+	      FOREIGN KEY (ssn) REFERENCES employee(Ssn)
+	   
+);
+
+select * from securiety;
+
+--weather--
+CREATE TABLE weather (
+    weather_id INT PRIMARY KEY,
+    dept_id INT,
+	d_type varchar(20),
+	ssn int,
+    FOREIGN KEY (dept_id) REFERENCES department(dept_id),
+	   FOREIGN KEY (d_type) REFERENCES depttype(d_type),
+	      FOREIGN KEY (ssn) REFERENCES employee(Ssn)
+	   
+);
+select * from weather;
+
+--maintenance---
+
+CREATE TABLE maintenance (
+    m_id INT PRIMARY KEY,
+    dept_id INT,
+	d_type varchar(20),
+	ssn int,
+    FOREIGN KEY (dept_id) REFERENCES department(dept_id),
+	   FOREIGN KEY (d_type) REFERENCES depttype(d_type),
+	      FOREIGN KEY (ssn) REFERENCES employee(Ssn)
+	   
+);
+select * from maintenance;
+
+--Department--
+ CREATE TABLE department (
+    dept_id INT PRIMARY KEY,
+    dname VARCHAR(50),
+    ssn CHAR(9),
+    loc_id INT,
+	d_typ varchar(10),
+    FOREIGN KEY (loc_id) REFERENCES office(loc_id),
+	FOREIGN KEY (d_typ) REFERENCES depttype(d_type)
+    );
+	select * from department;
+
 
 
